@@ -247,7 +247,8 @@ Comandos para documentar avances en git
 git init -> Para iniciar el git
 git log
 ls .gitignore
-git add. git commit -m "Mi primer commit" -> Para iniciar el primer commit
+git add . 
+git commit -m "Mi primer commit" -> Para iniciar el primer commit
 git status -> para ver los cambios
 ```
 Omitir capetas vendor, estar ubicados en git
