@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/sites":{"owner":"www-data","group":"www-data","guestpath":"/home/vagrant/sites","hostpath":"C:/Users/alexa/PrograSoftLib/Semana2/VMs2/webserver/sites","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/alexa/PrograSoftLib/Semana2/VMs2/webserver","disabled":false,"__vagrantfile":true}}}
