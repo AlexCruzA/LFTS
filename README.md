@@ -94,5 +94,51 @@ Vamos a cambiar el codigo de la ruta para poder encontrar post especificos y pas
 
 ![Alt text](image-23.png)
 
-Creamos la clase Post dentro de la carpeta App
+Creamos la clase o modelo Post dentro de la carpeta App / Models y llamamos al modelo desde route en web.php
 
+![Alt text](image-24.png)
+
+Llamado del modelo Post
+
+![Alt text](image-25.png)
+
+Ahora movemos el codigo anterior que teniamos en nuestro archivo de rutas(web.php) a la clase Post, con algunas modificaciones
+
+![Alt text](image-27.png)
+
+Y volvemos a modificar el archivo de rutas(web.php) para mejorar el codigo
+
+![Alt text](image-26.png)
+
+Modificamos los posts quemados anteriormente por el un foreach
+
+![Alt text](image-28.png)
+
+Luego modificamos en el archivo de rutas, la ruta del home
+
+![Alt text](image-29.png)
+
+Y ya que no temos un metodo all, debemos crearlo
+
+![Alt text](image-30.png)
+
+Asi se ve el home de momento
+
+![Alt text](image-31.png)
+
+
+Por lo que tenemos que modificar el objeto all
+
+![Alt text](image-32.png)
+
+Y ya se verán nuestros posts
+
+![Alt text](image-34.png)
+
+Agregamos un nuevo archivo post
+
+![Alt text](image-33.png)
+
+Y les colocamos metadata al inicio
+
+![Alt text](image-35.png)
