@@ -312,15 +312,17 @@ cache()->forget('posts.all')
 ```
 ![Alt text](image-41.png)
 
-
-
-
-
-
+# Blade: The Absolute Basics
+Blade es especifico para las vistas, nos facilita el codigo php dentro de ellas
 ```bash
-
+Antes   -   <?= $post->title; ?>
+Despues -   {{ $post->title }}
 ```
+Asi quedaría la pagina de posts.blade.php y una vez aprendido esto podemos crear Layouts
 
+![Alt text](image-42.png)
+
+#
 
 ```bash
 

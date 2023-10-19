@@ -35,8 +35,7 @@ class Post
                 $document->slug
             ))
             ->sortBydesc('date');
-        });
-        
+        }); 
     }
 
     public static function find($slug){
