@@ -322,11 +322,27 @@ Asi quedaría la pagina de posts.blade.php y una vez aprendido esto podemos crea
 
 ![Alt text](image-42.png)
 
-#
+# Blade: The Absolute Basics
+Vamos a crear layouts para poder utilizarlos en nuestras vistas y asi no tener que hacer imports en cada view por cada nuevo archivo que vayamos a crear.
 
+Creamos una nueva vista llamada layout.blade.php con el codigo
 ```bash
-
+    @yield('content')
 ```
+![Alt text](image-43.png)
+
+Al crear este layout, podemos modificar nuestro codigo del archivo posts.blade.php, quedando sin las etiquetas html y links.
+
+![Alt text](image-44.png)
+
+El post.blade.php igualmente
+
+![Alt text](image-45.png)
+
+
+Una manera alternativa de crear layouts es creando dentro de la carpeta views una subcarpeta llamada components, ahi metemos el archivo layout,blade.php y realizamos algunos cambios de codigo
+
+![Alt text](image-46.png)
 
 
 ```bash

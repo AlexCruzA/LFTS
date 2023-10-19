@@ -1,9 +1,6 @@
-<!DOCTYPE html>
+@extends('layout')
 
-    <title>My blog</title>
-    <link rel="stylesheet" href="/app.css">
-
-<body>
+@section('content')
     @foreach ($posts as $post)
         <article>
             <h1>
@@ -11,10 +8,9 @@
                     {{ $post->title }}
                 </a>
             </h1>
-
             <div>
                 {{ $post->excerpt }}
             </div>
         </article>
     @endforeach
-</body>
+@endsection
