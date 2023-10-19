@@ -344,14 +344,84 @@ Una manera alternativa de crear layouts es creando dentro de la carpeta views un
 
 ![Alt text](image-46.png)
 
+# A Few Tweaks and Considerations
 
+web.php
 ```bash
+<?php
+use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+use App\Models\Post;
 
+Route::get('/', function () {   
+    return view('posts', [
+        'posts' => Post::all()
+    ]);
+});
+
+Route::get('posts/{post}', function ($slug) {    
+    return view('post', [
+        'post' => Post::findOrFail($slug)
+    ]);
+});
 ```
 
-
+post.php
 ```bash
+<?php
 
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\File;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+class Post
+{
+    public $title;
+    public $excerpt;
+    public $date;
+    public $body;
+    public $slug;
+    public function __construct($title, $excerpt, $date, $body, $slug)
+    {
+        $this->title = $title;
+        $this->excerpt = $excerpt;
+        $this->date = $date;
+        $this->body = $body;
+        $this->slug = $slug;
+    }
+
+    public static function all()
+    {
+        return cache()->rememberForever("posts.all", function () {
+            return collect(File::files(resource_path("posts")))
+            ->map(fn($file) => YamlFrontMatter::parseFile($file))
+            ->map(fn($document) => new Post(
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+            ))
+            ->sortBydesc('date');
+        }); 
+    }
+
+    public static function find($slug)
+    {
+        return static::all()->firstWhere("slug", $slug);
+    }
+
+    public static function findOrFail($slug)
+    {
+        $post = static::find($slug);
+
+        if (! $post) {
+        throw new ModelNotFoundException();
+        }
+        return $post;
+    }
+}
 ```
 
 
