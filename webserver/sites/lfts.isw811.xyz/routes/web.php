@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Post;
 
 Route::get('/', function () {   
@@ -9,8 +8,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{post}', function ($slug) {    
+Route::get('posts/{post}', function ($id) {    
     return view('post', [
-        'post' => Post::findOrFail($slug)
+        'post' => Post::findOrFail($id)
     ]);
 });
+
