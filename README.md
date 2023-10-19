@@ -141,4 +141,138 @@ Agregamos un nuevo archivo post
 
 Y les colocamos metadata al inicio
 
-![Alt text](image-35.png)
+![Alt text](image-37.png)
+
+Vamos a instalar yaml-front-matter para manejar la metadata y el body
+```bash
+composer require spatie/yaml-front-matter
+```
+
+![Alt text](image-38.png)
+
+Se agregan variables, un constructor y se modifican los metodos all y find del post.php
+
+```bash
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\HigherOrderCollectionProxy;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+class Post
+{
+    public $title;
+    public $excerpt;
+    public $date;
+    public $body;
+    public $slug;
+    public function __construct($title, $excerpt, $date, $body, $slug)
+    {
+        $this->title = $title;
+        $this->excerpt = $excerpt;
+        $this->date = $date;
+        $this->body = $body;
+        $this->slug = $slug;
+    }
+
+    public static function all()
+    {
+        return collect(File::files(resource_path("posts")))
+        ->map(fn($file) => YamlFrontMatter::parseFile($file))
+        ->map(fn($document) => new Post(
+            $document->title,
+            $document->excerpt,
+            $document->date,
+            $document->body(),
+            $document->slug
+        ));
+    }
+
+    public static function find($slug){
+       return static::all()->firstWhere("slug", $slug);
+    }
+}
+```
+
+El web.php donde van nuestras rutas queda de la siguiente manera
+```bash
+<?php
+use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+use App\Models\Post;
+
+Route::get('/', function () {   
+    return view('posts', [
+        'posts' => Post::all()
+    ]);
+});
+
+Route::get('posts/{post}', function ($slug) {    
+    return view('post', [
+        'post' => Post::find($slug)
+    ]);
+})->where('post', '[A-z_\-]+');
+```
+
+El posts.blade.php que carga nuestros posts, siendo este el home basicamente quedaria así
+```bash
+<!DOCTYPE html>
+
+    <title>My blog</title>
+    <link rel="stylesheet" href="/app.css">
+
+<body>
+    <?php foreach ($posts as $post) : ?>
+
+        <article>
+            <h1>
+                <a href="/posts/<?= $post->slug; ?>">
+                    <?= $post->title; ?>
+                </a>
+            </h1>
+
+            <div>
+                <?= $post->excerpt;?>
+            </div>
+        </article>
+
+    <?php endforeach; ?>
+
+</body>
+
+```
+
+Y para que cargue cada uno de los posts selecionados individualmente debemos tener nustro codigo en post.blade.php de la siguiente manera
+```bash
+<!DOCTYPE html>
+
+    <title>My blog</title>
+    <link rel="stylesheet" href="/app.css">
+
+<body>
+    <?php foreach ($posts as $post) : ?>
+
+        <article>
+            <h1>
+                <a href="/posts/<?= $post->slug; ?>">
+                    <?= $post->title; ?>
+                </a>
+            </h1>
+
+            <div>
+                <?= $post->excerpt;?>
+            </div>
+        </article>
+
+    <?php endforeach; ?>
+
+</body>
+
+```
+
+
+```bash
+
+```

@@ -213,6 +213,8 @@ npm install && npm run dev #este comando se ejecuta dos veces
 ![Alt text](imagesW4/image-38.png)
 
 
+
+
 ## Descagar las dependencias y agregarlas a nuestro package.json
 ```bash
 cat package.json
@@ -222,6 +224,19 @@ cat package.json
 ![Alt text](imagesW4/image-36.png)
 
 ## Creamos las vistas de autenticacion
+
+Antes de correr el npm install primero debemos abrir un cmd como administrador ejecutar los siguientes comandos, uno a la vez.
+```bash
+FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum") DO (DISM /Online /NoRestart /Add-Package:"%F")
+
+FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum") DO (DISM /Online /NoRestart /Add-Package:"%F")
+```
+![Alt text](image-36.png)
+
+En mi caso no sirvem entonces debo levantar la vm de webserve desde un cmd como administrador
+
+Ahora si podemos realizar la instalacion
+
 ```bash
  php artisan ui bootstrap
  npm install && npm run dev
