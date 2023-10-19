@@ -269,6 +269,70 @@ Y para que cargue cada uno de los posts selecionados individualmente debemos ten
     <?php endforeach; ?>
 
 </body>
+```
+
+# Collection Sorting and Caching Refresher
+
+Ahora vamos a acomodar los post por fecha de manera descendente y los vamos a guadar en la cache para que no tenga que cargar cada vez que se accede a la pagina 
+
+![Alt text](image-35.png)
+
+```bash
+->sortBydesc('date');
+```
+
+Y para guardar en cache los post seria colocar todo el metodo all de la siguiente manera
+```bash
+ public static function all()
+    {
+        return cache()->rememberForever("posts.all", function () {
+            return collect(File::files(resource_path("posts")))
+            ->map(fn($file) => YamlFrontMatter::parseFile($file))
+            ->map(fn($document) => new Post(
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+            ))
+            ->sortBydesc('date');
+        }); 
+    }
+```
+Para validar que si guarda los post en cache podemos acceder a ella por medio del siguente comando
+```bash
+php artisan tinker
+```
+![Alt text](image-40.png)
+
+Para eliminar la cache ejecutamos el comando
+
+```bash
+cache()->forget('posts.all')
+```
+![Alt text](image-41.png)
+
+
+
+
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+```bash
 
 ```
 
