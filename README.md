@@ -958,21 +958,16 @@ Route::get('authors/{author:username}', function (User $author) {
         'posts' => $author->posts
     ]);
 });
-
 ```
+# Convert the HTML and CSS to Blade
+Descargamos el repositorio de git y pegamos el contenido del index en nuestro layout.blade.php de la carpeta components
+Pasamos la carpeta de imagenes a nuestro public y nada mas cambiamos las rutas del index y vemos la pagina asi
 
-```bash
+![Alt text](image-76.png)
 
-```
+Editamos el layout con el html del index que descargamos
+![Alt text](image-77.png)
 
-```bash
+Igualmente el post
 
-```
-
-```bash
-
-```
-
-```bash
-
-```
+![Alt text](image-79.png)
