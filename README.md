@@ -3,152 +3,152 @@
 ## My first commit
 Archivos base para empezar el curso LFTS a partir de la Section 2
 
-![Alt text](image-1.png)
+![Alt text](imagesLFTS1/image-1.png)
 
 ## Include CSS and Javascript
 Modificamos el welcom.blade.php que cargaba la vista basica de laravel creando nuestro propio código
 
-![Alt text](image-2.png)
+![Alt text](imagesLFTS1/image-2.png)
 
 Agregamos un archivo app.css para dar estilo por medio de css
 
-![Alt text](image-3.png)
+![Alt text](imagesLFTS1/image-3.png)
 
 Agregamos un archivo app.js para crear código javascript
 
-![Alt text](image-4.png)
+![Alt text](imagesLFTS1/image-4.png)
 
 ## Make a Route and Link to it
 Modificamos el nombre de la vista en la carpeta views y el llamado en el archivo web.php de la carpeta routes
 
-![Alt text](image-6.png)
+![Alt text](imagesLFTS1/image-6.png)
 
 Cambiamos el contenido del html de posts.blade.php
 
-![Alt text](image-5.png)
+![Alt text](imagesLFTS1/image-5.png)
 
 Junto con el css
 
-![Alt text](image-7.png)
+![Alt text](imagesLFTS1/image-7.png)
 
 Hacemos los titulos de cada post cliqueables y con un link que redireccione a otra página
 
-![Alt text](image-8.png)
+![Alt text](imagesLFTS1/image-8.png)
 
-![Alt text](image-9.png)
+![Alt text](imagesLFTS1/image-9.png)
 
-![Alt text](image-10.png)
+![Alt text](imagesLFTS1/image-10.png)
 
 Esto se logra creando una nueva vista en la carpeta views
 
-![Alt text](image-11.png)
+![Alt text](imagesLFTS1/image-11.png)
 
 Y una nueva ruta en web.php
 
-![Alt text](image-12.png)
+![Alt text](imagesLFTS1/image-12.png)
 
 Una vez creada la nueva vista del post individual, creamos un boton para regresar al Home
 
-![Alt text](image-14.png)
+![Alt text](imagesLFTS1/image-14.png)
 
-![Alt text](image-13.png)
+![Alt text](imagesLFTS1/image-13.png)
 
 ## Store Blog Posts as HTML Files
 
 Creamos una variable $post que podamos llamar
 
-![Alt text](image-15.png)
+![Alt text](imagesLFTS1/image-15.png)
 
 Creamos un folder llamado Posts con un archivo html por cada post
 
-![Alt text](image-17.png)
+![Alt text](imagesLFTS1/image-17.png)
 
 Pero para que funcione la variable $post debemos crearla en el archivo de rutas web.php cambiando un poco el get de la ruta, vamos a crear variables que obtengan la ruta del post seleccionado y vamos a evitar errores cuando se digite una ruta inexistente en la url
 
-![Alt text](image-16.png)
+![Alt text](imagesLFTS1/image-16.png)
 
 Antes de probar las rutas primero debemos modificarlas en el archivo posts.blade.php
 
-![Alt text](image-19.png)
+![Alt text](imagesLFTS1/image-19.png)
 
 A nivel de la página se vería de la siguiente manera
 
-![Alt text](image-18.png)
+![Alt text](imagesLFTS1/image-18.png)
 
 ## Route Wildcard Constraints
 Para delimitar lo que se puede o no poner en la ruta utilizamos un where para una expresión regular
 
-![Alt text](image-20.png)
+![Alt text](imagesLFTS1/image-20.png)
 
 ## Use Caching for Expensive Operations
 Vamos a crear código para que cada vez que se acceda a la ruta nuevamente, la cargue desde la memoria cache y no tenga que pasar por el sistema de archivos en cada hit.
 
-![Alt text](image-21.png)
+![Alt text](imagesLFTS1/image-21.png)
 
 Así se vería el código de la ruta un poco mas limpio
 
-![Alt text](image-22.png)
+![Alt text](imagesLFTS1/image-22.png)
 
 ## Use the Filesystem Class to Read a Directory
 Vamos a cambiar el codigo de la ruta para poder encontrar post especificos y pasarlos a la vista "post". Demos tomar en cuenta que la clase Post no está creada, es el siguiente paso.
 
-![Alt text](image-23.png)
+![Alt text](imagesLFTS1/image-23.png)
 
 Creamos la clase o modelo Post dentro de la carpeta App / Models y llamamos al modelo desde route en web.php
 
-![Alt text](image-24.png)
+![Alt text](imagesLFTS1/image-24.png)
 
 Llamado del modelo Post
 
-![Alt text](image-25.png)
+![Alt text](imagesLFTS1/image-25.png)
 
 Ahora movemos el codigo anterior que teniamos en nuestro archivo de rutas(web.php) a la clase Post, con algunas modificaciones
 
-![Alt text](image-27.png)
+![Alt text](imagesLFTS1/image-27.png)
 
 Y volvemos a modificar el archivo de rutas(web.php) para mejorar el codigo
 
-![Alt text](image-26.png)
+![Alt text](imagesLFTS1/image-26.png)
 
 Modificamos los posts quemados anteriormente por el un foreach
 
-![Alt text](image-28.png)
+![Alt text](imagesLFTS1/image-28.png)
 
 Luego modificamos en el archivo de rutas, la ruta del home
 
-![Alt text](image-29.png)
+![Alt text](imagesLFTS1/image-29.png)
 
 Y ya que no temos un metodo all, debemos crearlo
 
-![Alt text](image-30.png)
+![Alt text](imagesLFTS1/image-30.png)
 
 Asi se ve el home de momento
 
-![Alt text](image-31.png)
+![Alt text](imagesLFTS1/image-31.png)
 
 
 Por lo que tenemos que modificar el objeto all
 
-![Alt text](image-32.png)
+![Alt text](imagesLFTS1/image-32.png)
 
 Y ya se verán nuestros posts
 
-![Alt text](image-34.png)
+![Alt text](imagesLFTS1/image-34.png)
 
 Agregamos un nuevo archivo post
 
-![Alt text](image-33.png)
+![Alt text](imagesLFTS1/image-33.png)
 
 Y les colocamos metadata al inicio
 
-![Alt text](image-37.png)
+![Alt text](imagesLFTS1/image-37.png)
 
 Vamos a instalar yaml-front-matter para manejar la metadata y el body
 ```bash
 composer require spatie/yaml-front-matter
 ```
 
-![Alt text](image-38.png)
+![Alt text](imagesLFTS1/image-38.png)
 
 Se agregan variables, un constructor y se modifican los metodos all y find del post.php
 
@@ -275,7 +275,7 @@ Y para que cargue cada uno de los posts selecionados individualmente debemos ten
 
 Ahora vamos a acomodar los post por fecha de manera descendente y los vamos a guadar en la cache para que no tenga que cargar cada vez que se accede a la pagina 
 
-![Alt text](image-35.png)
+![Alt text](imagesLFTS1/image-35.png)
 
 ```bash
 ->sortBydesc('date');
@@ -303,14 +303,14 @@ Para validar que si guarda los post en cache podemos acceder a ella por medio de
 ```bash
 php artisan tinker
 ```
-![Alt text](image-40.png)
+![Alt text](imagesLFTS1/image-40.png)
 
 Para eliminar la cache ejecutamos el comando
 
 ```bash
 cache()->forget('posts.all')
 ```
-![Alt text](image-41.png)
+![Alt text](imagesLFTS1/image-41.png)
 
 # Blade: The Absolute Basics
 Blade es especifico para las vistas, nos facilita el codigo php dentro de ellas
@@ -320,7 +320,7 @@ Despues -   {{ $post->title }}
 ```
 Asi quedaría la pagina de posts.blade.php y una vez aprendido esto podemos crear Layouts
 
-![Alt text](image-42.png)
+![Alt text](imagesLFTS1/image-42.png)
 
 # Blade: The Absolute Basics
 Vamos a crear layouts para poder utilizarlos en nuestras vistas y asi no tener que hacer imports en cada view por cada nuevo archivo que vayamos a crear.
@@ -329,20 +329,20 @@ Creamos una nueva vista llamada layout.blade.php con el codigo
 ```bash
     @yield('content')
 ```
-![Alt text](image-43.png)
+![Alt text](imagesLFTS1/image-43.png)
 
 Al crear este layout, podemos modificar nuestro codigo del archivo posts.blade.php, quedando sin las etiquetas html y links.
 
-![Alt text](image-44.png)
+![Alt text](imagesLFTS1/image-44.png)
 
 El post.blade.php igualmente
 
-![Alt text](image-45.png)
+![Alt text](imagesLFTS1/image-45.png)
 
 
 Una manera alternativa de crear layouts es creando dentro de la carpeta views una subcarpeta llamada components, ahi metemos el archivo layout,blade.php y realizamos algunos cambios de codigo
 
-![Alt text](image-46.png)
+![Alt text](imagesLFTS1/image-46.png)
 
 # A Few Tweaks and Considerations
 
@@ -428,45 +428,45 @@ class Post
 
 Realizamos la migracion de la BD, configurando el .env
 
-![Alt text](image-48.png)
+![Alt text](imagesLFTS1/image-48.png)
 
 Y ejecutando el comando
 ```bash
 php artisan migrate
 ```
-![Alt text](image-49.png)
+![Alt text](imagesLFTS1/image-49.png)
 
-![Alt text](image-47.png)
+![Alt text](imagesLFTS1/image-47.png)
 
 # Make a Post Model and Migration
 Borramos el modelo Post.php porque ahora vamos a transicionar a un post con Eloquent Model.
 
 Creamos la migracion de los posts
 
-![Alt text](image-50.png)
+![Alt text](imagesLFTS1/image-50.png)
 
 ```bash
 php artisan make:migration create_posts_table
 ```
-![Alt text](image-51.png)
+![Alt text](imagesLFTS1/image-51.png)
 
 Borramos la carpeta con los post creados manualmente y modificamos la migracion de create_posts_table para que cuente con los campos que necesitamos
 
-![Alt text](image-53.png)
+![Alt text](imagesLFTS1/image-53.png)
 
-![Alt text](image-52.png)
+![Alt text](imagesLFTS1/image-52.png)
 
 Debemos crear un Eloquent Model 
 ```bash
 php artisan make:model Post 
 ```
-![Alt text](image-54.png)
+![Alt text](imagesLFTS1/image-54.png)
 
-![Alt text](image-55.png)
+![Alt text](imagesLFTS1/image-55.png)
 
 Con php atrtisan tinker creamos un post
 
-![Alt text](image-56.png)
+![Alt text](imagesLFTS1/image-56.png)
 
 ```bash
 php artisan tinker
@@ -486,20 +486,20 @@ $post->body = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedit
 $post->save();
 ```
 
-![Alt text](image-57.png)
+![Alt text](imagesLFTS1/image-57.png)
 
 ```bash
 use App\Models\Post;
 Post::count();
 ```
-![Alt text](image-58.png)
+![Alt text](imagesLFTS1/image-58.png)
 
 
 ## Asi se va viendo el site
 
-![Alt text](image-59.png)
+![Alt text](imagesLFTS1/image-59.png)
 
-![Alt text](image-60.png)
+![Alt text](imagesLFTS1/image-60.png)
 
 # Eloquent Updates and HTML Escaping
 Actualizacion de blog post existente, cambiamos el body a html
@@ -521,15 +521,15 @@ $post = App\Models\Post::find(2); //Para actualizar los demas por id
 Post::create(['title' => 'My Fourth Post', 'excerpt' => 'Lorem ipsum dolar sit amet consectetur adipisicing elit.', 'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita accusamus quaerat aliquid incidunt nihil iste sed velit ipsam, suscipit molestias dicta fugiat odio officia omnis reprehenderit minus quidem minima.odio officia omnis reprehenderit minus quidem minima.' ]);
 ```
 Archivo Post.php, si se agregan mas datos en el inster masivo entonces laravel lo rechaza
-![Alt text](image-61.png)
+![Alt text](imagesLFTS1/image-61.png)
 
 2- Por medio de protected podemos evitar que se agreguen datos indeseados como puede ser el id del post, entonces a la hora de hacer el mass asign con un id, el sistema si crea el post pero ignorando el id.
 
-![Alt text](image-62.png)
+![Alt text](imagesLFTS1/image-62.png)
 
 3- La tarcera opcion es nunca permitir el mass asign, simplemente dejando el array vacio
 
-![Alt text](image-64.png)
+![Alt text](imagesLFTS1/image-64.png)
 
 # Route Model Binding
 Le agregamos al archivo de migration, una variable slug
@@ -565,7 +565,7 @@ Creacion de modelo y su migration
 ```bash
 php artisan make:model Category -m
 ```
-![Alt text](image-63.png)
+![Alt text](imagesLFTS1/image-63.png)
 
 Creamos varias categorias despues de ralizar un php artisan migrate:fresh
 ```bash
@@ -576,9 +576,9 @@ $c->name = 'Personal';
 $c->slug = 'personal';
 $c->save();
 ```
-![Alt text](image-65.png)
+![Alt text](imagesLFTS1/image-65.png)
 
-![Alt text](image-66.png)
+![Alt text](imagesLFTS1/image-66.png)
 
 Ahora vamos a crear posts
 ```bash
@@ -619,9 +619,9 @@ Agregamos a nuestro post.blade.php y posts.blade.php el siguiente codigo para po
 </p>
 ```
 
-![Alt text](image-67.png)
+![Alt text](imagesLFTS1/image-67.png)
 
-![Alt text](image-68.png)
+![Alt text](imagesLFTS1/image-68.png)
 
 # Show All Posts Associated With a Category
 Agregamos un nuevo metodo a Web.php
@@ -679,7 +679,7 @@ public function up()
 
 Accedemos al archivo de la carpeta seeder y creamos lo siguiente
 
-![Alt text](image-70.png)
+![Alt text](imagesLFTS1/image-70.png)
 
 
 Corremos el migrate seed para actualizar la BD y repoblarla
@@ -757,7 +757,7 @@ php artisan make:factory PostFactory
 ```
 Lo modificamos
 
-![Alt text](image-69.png)
+![Alt text](imagesLFTS1/image-69.png)
 
 Creamos un factory CategoryFactory
 ```bash
@@ -794,7 +794,7 @@ Ingresamos a tinker
 php artisan tinker
 App\Models\Post::factory()->create();
 ```
-![Alt text](image-71.png)
+![Alt text](imagesLFTS1/image-71.png)
 
 
 Modificamos nuevamente el databaseSeeder
@@ -829,9 +829,9 @@ php artisan db:seed
 
 Y ya podemos ver un post creado automaticamente en todos sus campos
 
-![Alt text](image-72.png)
+![Alt text](imagesLFTS1/image-72.png)
 
-![Alt text](image-73.png)
+![Alt text](imagesLFTS1/image-73.png)
 
 
 Modificamos nuevamente el databaseSeeder para que el usuario siempre sea Alex Cruz
@@ -866,7 +866,7 @@ class DatabaseSeeder extends Seeder
 }
 ```
 
-![Alt text](image-74.png)
+![Alt text](imagesLFTS1/image-74.png)
 
 En cada cambio se recomienda correr
 ```bash
@@ -919,7 +919,7 @@ php artisan migrate:fresh --seed
 
 Y asi se ve la pagina
 
-![Alt text](image-75.png)
+![Alt text](imagesLFTS1/image-75.png)
 
 # Eager Load Relationships on an Existing Model
 
@@ -963,11 +963,11 @@ Route::get('authors/{author:username}', function (User $author) {
 Descargamos el repositorio de git y pegamos el contenido del index en nuestro layout.blade.php de la carpeta components
 Pasamos la carpeta de imagenes a nuestro public y nada mas cambiamos las rutas del index y vemos la pagina asi
 
-![Alt text](image-76.png)
+![Alt text](imagesLFTS1/image-76.png)
 
 Editamos el layout con el html del index que descargamos
-![Alt text](image-77.png)
+![Alt text](imagesLFTS1/image-77.png)
 
 Igualmente el post
 
-![Alt text](image-79.png)
+![Alt text](imagesLFTS1/image-79.png)
