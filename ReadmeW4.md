@@ -265,6 +265,7 @@ ls .gitignore
 git add . 
 git commit -m "Mi primer commit" -> Para iniciar el primer commit
 git status -> para ver los cambios
+git push -u laravel main
 ```
 Omitir capetas vendor, estar ubicados en git
 ```bash
@@ -274,4 +275,5 @@ code README.md -> Crear aqui el registro del avance en el curso, crear un nuevo 
 
 
 ```bash
+
 ```
